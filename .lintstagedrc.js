@@ -1,8 +1,8 @@
- 
 import { relative } from "path"
 
 const buildEslintCommand = (filenames) =>
   `next lint --fix --file ${filenames
+    .filter((f) => !f.includes(".next")) // Bỏ qua file trong .next
     .map((f) => relative(process.cwd(), f))
     .join(" --file ")}`
 
